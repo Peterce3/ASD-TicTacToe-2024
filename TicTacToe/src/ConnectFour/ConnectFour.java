@@ -114,7 +114,7 @@ public class ConnectFour extends JFrame {
 
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       pack();  // pack all the components in this JFrame
-      setTitle("Tic Tac Toe");
+      setTitle("Connect Four");
       setVisible(true);  // show this JFrame
 
       newGame();
