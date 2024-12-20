@@ -50,6 +50,14 @@ public class GameMain extends JPanel {
                   }
                   // Switch player
                   currentPlayer = (currentPlayer == Seed.CROSS) ? Seed.NOUGHT : Seed.CROSS;
+                  
+                  if (currentState == State.PLAYING) {
+                      AIPlayerTableLookup AI = new AIPlayerTableLookup(board);
+                	  //AIPlayerMinimax AI = new AIPlayerMinimax(board);
+                      int[] aiMove = AI.move();
+                          currentState = board.stepGame(currentPlayer, aiMove[0], aiMove[1]);
+                          currentPlayer = (currentPlayer == Seed.CROSS) ? Seed.NOUGHT : Seed.CROSS;
+                  }
                }
             } else {        // game over
                newGame();  // restart the game
@@ -75,6 +83,7 @@ public class GameMain extends JPanel {
       super.setBorder(BorderFactory.createLineBorder(COLOR_BG_STATUS, 2, false));
 
       // Set up Game
+      SoundEffect.initGame();
       initGame();
       newGame();
    }
